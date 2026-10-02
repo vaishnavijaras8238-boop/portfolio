@@ -1,287 +1,629 @@
-<!doctype html>
-<html lang="en" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vaishnavi Jaras - Portfolio</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    .font-heading { font-family: 'Syne', sans-serif; }
-    .font-body { font-family: 'DM Sans', sans-serif; }
-    .hero-gradient { background: linear-gradient(135deg, #0f0f1e 0%, #1a0f2e 50%, #0a0a15 100%); }
-    .glow { box-shadow: 0 0 60px rgba(232, 121, 82, 0.15); }
-    .card-hover { transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease; }
-    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .fade-up { opacity: 0; transform: translateY(30px); animation: fadeUp 0.7s ease forwards; }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    .stagger-1 { animation-delay: 0.1s; }
-    .stagger-2 { animation-delay: 0.2s; }
-    .stagger-3 { animation-delay: 0.3s; }
-    .stagger-4 { animation-delay: 0.4s; }
-    .stagger-5 { animation-delay: 0.5s; }
-    .skill-bar { transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
-    .nav-link { position: relative; }
-    .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #e87952; transition: width 0.3s ease; }
-    .nav-link:hover::after { width: 100%; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.08; animation: blobFloat 8s ease-in-out infinite; }
-    @keyframes blobFloat { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -20px) scale(1.1); } }
-    .section-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(232,121,82,0.3), transparent); }
-    html, body { height: 100%; }
-    .gradient-text { background: linear-gradient(135deg, #e87952 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .neon-glow { box-shadow: 0 0 30px rgba(167, 139, 250, 0.3), 0 0 60px rgba(232, 121, 82, 0.2); }
-  </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full font-body" style="background: #0a0a0f; color: #e8e0d8;">
-  <div id="app" class="w-full h-full overflow-auto"><!-- Nav -->
-   <nav class="fixed top-0 left-0 w-full z-50 backdrop-blur-md" style="background: rgba(10,10,15,0.85); border-bottom: 1px solid rgba(232,121,82,0.1);">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"><span class="font-heading font-bold text-xl" style="color: #e87952;">Vaishnavi Jaras</span>
-     <div class="hidden md:flex gap-8 text-sm tracking-wide"><a href="#home" class="nav-link" style="color: #e8e0d8;">Home</a> <a href="#about" class="nav-link" style="color: #e8e0d8;">About</a> <a href="#skills" class="nav-link" style="color: #e8e0d8;">Skills</a> <a href="#projects" class="nav-link" style="color: #e8e0d8;">Projects</a> <a href="#contact" class="nav-link" style="color: #e8e0d8;">Contact</a>
-     </div><button id="mobile-menu-btn" class="md:hidden" style="color: #e8e0d8;"><i data-lucide="menu" style="width:24px;height:24px;"></i></button>
-    </div>
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 text-sm"><a href="#home" class="mobile-nav" style="color: #e8e0d8;">Home</a> <a href="#about" class="mobile-nav" style="color: #e8e0d8;">About</a> <a href="#skills" class="mobile-nav" style="color: #e8e0d8;">Skills</a> <a href="#projects" class="mobile-nav" style="color: #e8e0d8;">Projects</a> <a href="#contact" class="mobile-nav" style="color: #e8e0d8;">Contact</a>
-    </div>
-   </nav><!-- Hero -->
-   <section id="home" class="hero-gradient relative min-h-screen flex items-center overflow-hidden" style="padding-top: 80px;">
-    <div class="blob" style="width:400px;height:400px;background:#e87952;top:10%;left:5%;"></div>
-    <div class="blob" style="width:300px;height:300px;background:#a78bfa;bottom:10%;right:10%;animation-delay:3s;"></div>
-    <div class="max-w-6xl mx-auto px-6 py-20 relative z-10">
-     <p class="fade-up stagger-1 text-sm tracking-widest uppercase mb-4" style="color: #e87952;">Welcome to my world</p>
-     <h1 class="fade-up stagger-2 font-heading font-800 text-5xl md:text-7xl lg:text-8xl leading-tight mb-6 gradient-text">Vaishnavi<br>
-      Jaras</h1>
-     <p class="fade-up stagger-3 text-lg md:text-xl max-w-lg mb-10" style="color: rgba(232,224,216,0.6);">Data Analyst | Turning Data Into Insights</p>
-     <div class="fade-up stagger-4 flex gap-4 flex-wrap"><a href="#projects" class="px-8 py-3 rounded-full font-medium text-sm tracking-wide transition-all hover:scale-105 neon-glow" style="background: linear-gradient(135deg, #e87952, #a78bfa); color: #0a0a0f;">View Projects</a> <a href="#contact" class="px-8 py-3 rounded-full font-medium text-sm tracking-wide transition-all hover:scale-105" style="border: 2px solid rgba(232,121,82,0.6); color: #e8e0d8; background: rgba(167,139,250,0.08);">Get in Touch</a>
-     </div>
-    </div>
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 fade-up stagger-5">
-     <div class="w-6 h-10 rounded-full border-2 flex justify-center pt-2" style="border-color: rgba(232,121,82,0.4);">
-      <div class="w-1 h-2 rounded-full" style="background: #e87952; animation: blobFloat 2s ease-in-out infinite;"></div>
-     </div>
-    </div>
-   </section>
-   <div class="section-divider"></div><!-- About -->
-   <section id="about" class="py-24 px-6" style="background: #0d0d14;">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-     <div class="relative">
-      <div class="w-full aspect-square rounded-3xl glow flex items-center justify-center" style="background: linear-gradient(135deg, #1a1a2e, #151520);">
-       <div class="text-center">
-        <div class="text-8xl mb-4">
-         👨‍💻
-        </div>
-        <p class="font-heading font-bold text-lg" style="color: #e87952;">3+ Years</p>
-        <p class="text-sm" style="color: rgba(232,224,216,0.5);">of Experience</p>
-       </div>
-      </div>
-      <div class="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl flex items-center justify-center" style="background: #e87952;"><span class="font-heading font-bold text-2xl" style="color: #0a0a0f;">50+</span>
-      </div>
-     </div>
-     <div>
-      <p class="text-sm tracking-widest uppercase mb-3" style="color: #e87952;">About Me</p>
-      <h2 class="font-heading font-bold text-3xl md:text-4xl mb-6" style="color: #e8e0d8;">Turning ideas into reality</h2>
-      <p class="leading-relaxed mb-6" style="color: rgba(232,224,216,0.6);">I'm passionate about data and insights. I love working with data to uncover meaningful patterns and transform raw information into actionable intelligence. With a strong foundation in analytics and data science, I help organizations make data-driven decisions.</p>
-      <div class="grid grid-cols-2 gap-4">
-       <div class="p-4 rounded-xl" style="background: rgba(232,121,82,0.08); border: 1px solid rgba(232,121,82,0.15);">
-        <p class="font-heading font-bold text-2xl" style="color: #e87952;">10+</p>
-        <p class="text-xs mt-1" style="color: rgba(232,224,216,0.5);">Projects Analyzed</p>
-       </div>
-       <div class="p-4 rounded-xl" style="background: rgba(232,121,82,0.08); border: 1px solid rgba(232,121,82,0.15);">
-        <p class="font-heading font-bold text-2xl" style="color: #e87952;">5+</p>
-        <p class="text-xs mt-1" style="color: rgba(232,224,216,0.5);">Certifications</p>
-       </div>
-      </div>
-      <div class="mt-6 p-4 rounded-xl" style="background: rgba(232,121,82,0.08); border: 1px solid rgba(232,121,82,0.15);">
-       <p class="text-xs mb-2 font-heading font-bold" style="color: #e87952;">Education</p>
-       <p class="text-sm" style="color: rgba(232,224,216,0.7);">B.Tech in Engineering, Vidyalankar Institute of Technology, Mumbai</p>
-      </div>
-     </div>
-    </div>
-   </section>
-   <div class="section-divider"></div><!-- Skills -->
-   <section id="skills" class="py-24 px-6" style="background: #0a0a0f;">
-    <div class="max-w-6xl mx-auto">
-     <p class="text-sm tracking-widest uppercase mb-3 text-center" style="color: #e87952;">Expertise</p>
-     <h2 class="font-heading font-bold text-3xl md:text-4xl mb-16 text-center" style="color: #e8e0d8;">Skills &amp; Tools</h2>
-     <div class="grid md:grid-cols-2 gap-8">
-      <div class="space-y-6">
-       <div>
-        <div class="flex justify-between mb-2 text-sm">
-         <span style="color:#e8e0d8;">Python / Pandas</span><span style="color:#e87952;">92%</span>
-        </div>
-        <div class="h-2 rounded-full" style="background: rgba(232,121,82,0.15);">
-         <div class="skill-bar h-full rounded-full" style="width:92%;background:#e87952;"></div>
-        </div>
-       </div>
-       <div>
-        <div class="flex justify-between mb-2 text-sm">
-         <span style="color:#e8e0d8;">SQL / Databases</span><span style="color:#e87952;">88%</span>
-        </div>
-        <div class="h-2 rounded-full" style="background: rgba(232,121,82,0.15);">
-         <div class="skill-bar h-full rounded-full" style="width:88%;background:#e87952;"></div>
-        </div>
-       </div>
-       <div>
-        <div class="flex justify-between mb-2 text-sm">
-         <span style="color:#e8e0d8;">Excel / Pivot Tables</span><span style="color:#e87952;">95%</span>
-        </div>
-        <div class="h-2 rounded-full" style="background: rgba(232,121,82,0.15);">
-         <div class="skill-bar h-full rounded-full" style="width:95%;background:#e87952;"></div>
-        </div>
-       </div>
-       <div>
-        <div class="flex justify-between mb-2 text-sm">
-         <span style="color:#e8e0d8;">Power BI / Tableau</span><span style="color:#e87952;">85%</span>
-        </div>
-        <div class="h-2 rounded-full" style="background: rgba(232,121,82,0.15);">
-         <div class="skill-bar h-full rounded-full" style="width:85%;background:#e87952;"></div>
-        </div>
-       </div>
-      </div>
-      <div class="grid grid-cols-3 gap-4">
-       <div class="p-5 rounded-xl text-center card-hover" style="background: rgba(232,121,82,0.06); border: 1px solid rgba(232,121,82,0.12);"><i data-lucide="bar-chart-3" style="width:28px;height:28px;color:#e87952;margin:0 auto 8px;"></i>
-        <p class="text-xs" style="color:rgba(232,224,216,0.6);">Power BI</p>
-       </div>
-       <div class="p-5 rounded-xl text-center card-hover" style="background: rgba(232,121,82,0.06); border: 1px solid rgba(232,121,82,0.12);"><i data-lucide="database" style="width:28px;height:28px;color:#e87952;margin:0 auto 8px;"></i>
-        <p class="text-xs" style="color:rgba(232,224,216,0.6);">SQL</p>
-       </div>
-       <div class="p-5 rounded-xl text-center card-hover" style="background: rgba(232,121,82,0.06); border: 1px solid rgba(232,121,82,0.12);"><i data-lucide="line-chart" style="width:28px;height:28px;color:#e87952;margin:0 auto 8px;"></i>
-        <p class="text-xs" style="color:rgba(232,224,216,0.6);">Tableau</p>
-       </div>
-       <div class="p-5 rounded-xl text-center card-hover" style="background: rgba(232,121,82,0.06); border: 1px solid rgba(232,121,82,0.12);"><i data-lucide="sheet" style="width:28px;height:28px;color:#e87952;margin:0 auto 8px;"></i>
-        <p class="text-xs" style="color:rgba(232,224,216,0.6);">Excel</p>
-       </div>
-       <div class="p-5 rounded-xl text-center card-hover" style="background: rgba(232,121,82,0.06); border: 1px solid rgba(232,121,82,0.12);"><i data-lucide="code" style="width:28px;height:28px;color:#e87952;margin:0 auto 8px;"></i>
-        <p class="text-xs" style="color:rgba(232,224,216,0.6);">Python</p>
-       </div>
-       <div class="p-5 rounded-xl text-center card-hover" style="background: rgba(232,121,82,0.06); border: 1px solid rgba(232,121,82,0.12);"><i data-lucide="zap" style="width:28px;height:28px;color:#e87952;margin:0 auto 8px;"></i>
-        <p class="text-xs" style="color:rgba(232,224,216,0.6);">Statistics</p>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <div class="section-divider"></div><!-- Projects -->
-   <section id="projects" class="py-24 px-6" style="background: #0d0d14;">
-    <div class="max-w-6xl mx-auto">
-     <p class="text-sm tracking-widest uppercase mb-3 text-center" style="color: #e87952;">Portfolio</p>
-     <h2 class="font-heading font-bold text-3xl md:text-4xl mb-16 text-center" style="color: #e8e0d8;">Featured Projects</h2>
-     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="rounded-2xl overflow-hidden card-hover" style="background: #151520; border: 1px solid rgba(232,121,82,0.1);">
-       <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #1e3a5f, #0d1b2a);"><i data-lucide="pie-chart" style="width:48px;height:48px;color:#e87952;"></i>
-       </div>
-       <div class="p-6">
-        <h3 class="font-heading font-bold text-lg mb-2" style="color:#e8e0d8;">Sales Data Analysis</h3>
-        <p class="text-sm mb-4" style="color:rgba(232,224,216,0.5);">Analyzed quarterly sales trends and created dashboards to identify revenue patterns and opportunities.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Power BI</span> <span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Excel</span>
-        </div>
-       </div>
-      </div>
-      <div class="rounded-2xl overflow-hidden card-hover" style="background: #151520; border: 1px solid rgba(232,121,82,0.1);">
-       <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #2d1f3d, #1a1028);"><i data-lucide="bar-chart-3" style="width:48px;height:48px;color:#e87952;"></i>
-       </div>
-       <div class="p-6">
-        <h3 class="font-heading font-bold text-lg mb-2" style="color:#e8e0d8;">Customer Segmentation</h3>
-        <p class="text-sm mb-4" style="color:rgba(232,224,216,0.5);">Performed clustering analysis on customer data to identify market segments and develop targeted strategies.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Python</span> <span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">SQL</span>
-        </div>
-       </div>
-      </div>
-      <div class="rounded-2xl overflow-hidden card-hover" style="background: #151520; border: 1px solid rgba(232,121,82,0.1);">
-       <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #1f3d2d, #0a1f14);"><i data-lucide="line-chart" style="width:48px;height:48px;color:#e87952;"></i>
-       </div>
-       <div class="p-6">
-        <h3 class="font-heading font-bold text-lg mb-2" style="color:#e8e0d8;">Predictive Analytics Project</h3>
-        <p class="text-sm mb-4" style="color:rgba(232,224,216,0.5);">Built machine learning models to forecast future trends and created interactive visualizations for stakeholders.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Tableau</span> <span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Python</span>
-        </div>
-       </div>
-      </div>
-      <div class="rounded-2xl overflow-hidden card-hover" style="background: #151520; border: 1px solid rgba(232,121,82,0.1);">
-       <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #3d2d1f, #1f1408);"><i data-lucide="table" style="width:48px;height:48px;color:#e87952;"></i>
-       </div>
-       <div class="p-6">
-        <h3 class="font-heading font-bold text-lg mb-2" style="color:#e8e0d8;">Financial Data Reporting</h3>
-        <p class="text-sm mb-4" style="color:rgba(232,224,216,0.5);">Created comprehensive financial reports and KPI dashboards for executive decision-making.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Excel</span> <span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Power BI</span>
-        </div>
-       </div>
-      </div>
-      <div class="rounded-2xl overflow-hidden card-hover" style="background: #151520; border: 1px solid rgba(232,121,82,0.1);">
-       <div class="h-48 flex items-center justify-center" style="background: linear-gradient(135deg, #1f2d3d, #081428);"><i data-lucide="database" style="width:48px;height:48px;color:#e87952;"></i>
-       </div>
-       <div class="p-6">
-        <h3 class="font-heading font-bold text-lg mb-2" style="color:#e8e0d8;">Database Optimization</h3>
-        <p class="text-sm mb-4" style="color:rgba(232,224,216,0.5);">Optimized database queries and structured data for faster analytics and reporting efficiency.</p>
-        <div class="flex gap-2 flex-wrap"><span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">SQL</span> <span class="px-3 py-1 rounded-full text-xs" style="background:rgba(232,121,82,0.12);color:#e87952;">Python</span>
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-   </section>
-   <div class="section-divider"></div><!-- Contact -->
-   <section id="contact" class="py-24 px-6" style="background: #0a0a0f;">
-    <div class="max-w-2xl mx-auto text-center">
-     <p class="text-sm tracking-widest uppercase mb-3" style="color: #e87952;">Get in Touch</p>
-     <h2 class="font-heading font-bold text-3xl md:text-4xl mb-6" style="color: #e8e0d8;">Let's Work Together</h2>
-     <p class="mb-10" style="color:rgba(232,224,216,0.5);">Have a project in mind? Let's create something amazing.</p>
-     <form id="contact-form" class="text-left space-y-4">
-      <div class="grid md:grid-cols-2 gap-4"><input type="text" placeholder="Your Name" required class="w-full px-5 py-3 rounded-xl outline-none text-sm transition-all focus:ring-2" style="background:#151520;border:1px solid rgba(232,121,82,0.15);color:#e8e0d8;--tw-ring-color:#e87952;"> <input type="email" placeholder="Your Email" required class="w-full px-5 py-3 rounded-xl outline-none text-sm transition-all focus:ring-2" style="background:#151520;border:1px solid rgba(232,121,82,0.15);color:#e8e0d8;--tw-ring-color:#e87952;">
-      </div><input type="text" placeholder="Subject" class="w-full px-5 py-3 rounded-xl outline-none text-sm transition-all focus:ring-2" style="background:#151520;border:1px solid rgba(232,121,82,0.15);color:#e8e0d8;--tw-ring-color:#e87952;"> <textarea placeholder="Your Message" rows="5" required class="w-full px-5 py-3 rounded-xl outline-none text-sm transition-all focus:ring-2 resize-none" style="background:#151520;border:1px solid rgba(232,121,82,0.15);color:#e8e0d8;--tw-ring-color:#e87952;"></textarea> <button type="submit" class="w-full py-4 rounded-xl font-heading font-bold text-sm tracking-wide transition-all hover:scale-[1.02]" style="background:#e87952;color:#0a0a0f;"> Send Message <i data-lucide="send" style="width:16px;height:16px;display:inline;vertical-align:middle;margin-left:6px;"></i> </button>
-     </form>
-     <div id="form-success" class="hidden mt-6 p-4 rounded-xl" style="background:rgba(232,121,82,0.1);border:1px solid rgba(232,121,82,0.3);">
-      <p style="color:#e87952;">✨ Message sent successfully! I'll get back to you soon.</p>
-     </div>
-     <div class="flex justify-center gap-6 mt-12"><a href="https://github.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background:rgba(232,121,82,0.1);border:1px solid rgba(232,121,82,0.2);"> <i data-lucide="github" style="width:20px;height:20px;color:#e87952;"></i> </a> <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background:rgba(232,121,82,0.1);border:1px solid rgba(232,121,82,0.2);"> <i data-lucide="linkedin" style="width:20px;height:20px;color:#e87952;"></i> </a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background:rgba(232,121,82,0.1);border:1px solid rgba(232,121,82,0.2);"> <i data-lucide="twitter" style="width:20px;height:20px;color:#e87952;"></i> </a> <a href="mailto:vaishnavi@example.com" class="w-12 h-12 rounded-full flex items-center justify-center transition-all hover:scale-110" style="background:rgba(232,121,82,0.1);border:1px solid rgba(232,121,82,0.2);"> <i data-lucide="mail" style="width:20px;height:20px;color:#e87952;"></i> </a>
-     </div>
-    </div>
-   </section><!-- Footer -->
-   <footer class="py-8 px-6 text-center text-sm" style="background:#0d0d14;border-top:1px solid rgba(232,121,82,0.08);color:rgba(232,224,216,0.3);">
-    © 2024 All Rights Reserved. Designed with ❤️
-   </footer>
-  </div>
-  <script>
-   // Mobile menu
-   document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-   });
-   document.querySelectorAll('.mobile-nav').forEach(link => {
-    link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-   });
 
-   // Smooth scroll
-   document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-     e.preventDefault();
-     document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-    });
-   });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vaishnavi Jaras | Portfolio</title>
 
-   // Contact form
-   document.getElementById('contact-form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    document.getElementById('form-success').classList.remove('hidden');
-    e.target.reset();
-    setTimeout(() => document.getElementById('form-success').classList.add('hidden'), 4000);
-   });
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-   // Skill bar animation on scroll
-   const observer = new IntersectionObserver((entries) => {
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #080b1a;
+    --card: #11162b;
+    --purple: #a78bfa;
+    --pink: #e879f9;
+    --text: #f5f3ff;
+    --muted: #aaa9c2;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+/* Background effects */
+body::before {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    background: #7c3aed;
+    filter: blur(180px);
+    opacity: 0.18;
+    top: -150px;
+    left: -150px;
+    z-index: -1;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    background: #db2777;
+    filter: blur(180px);
+    opacity: 0.12;
+    bottom: -150px;
+    right: -100px;
+    z-index: -1;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 9%;
+    position: sticky;
+    top: 0;
+    background: rgba(8,11,26,0.9);
+    backdrop-filter: blur(15px);
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--purple);
+}
+
+.logo span {
+    color: var(--pink);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+section {
+    padding: 95px 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 45px;
+}
+
+.section-title span {
+    color: var(--purple);
+}
+
+/* Hero section */
+.hero {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-content {
+    max-width: 650px;
+    animation: slideUp 1s ease;
+}
+
+.small-heading {
+    color: var(--pink);
+    letter-spacing: 3px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 6vw, 65px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    background: linear-gradient(90deg, #a78bfa, #e879f9);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero h3 {
+    color: var(--muted);
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
+    max-width: 570px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.primary {
+    background: linear-gradient(90deg, #8b5cf6, #d946ef);
+    color: white;
+    border: none;
+}
+
+.secondary {
+    border: 1px solid var(--purple);
+    color: var(--purple);
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px #a78bfa55;
+}
+
+.hero-circle {
+    width: 270px;
+    height: 270px;
+    min-width: 270px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 85px;
+    font-weight: 800;
+    color: white;
+    box-shadow: 0 0 50px #a78bfa55;
+    animation: float 4s ease-in-out infinite;
+}
+
+/* About */
+.about-box {
+    background: var(--card);
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid #a78bfa30;
+    line-height: 1.9;
+    color: var(--muted);
+    font-size: 14px;
+    transition: 0.4s;
+}
+
+.about-box:hover {
+    border-color: var(--purple);
+    transform: translateY(-5px);
+}
+
+/* Skills */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.skill-card {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid #ffffff12;
+    transition: 0.4s;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--purple);
+    box-shadow: 0 10px 30px #a78bfa20;
+}
+
+.skill-card h3 {
+    color: var(--purple);
+    margin-bottom: 12px;
+    font-size: 17px;
+}
+
+.skill-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.project-card {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 18px;
+    border: 1px solid #ffffff12;
+    transition: 0.4s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--pink);
+    box-shadow: 0 10px 35px #e879f920;
+}
+
+.project-number {
+    font-size: 30px;
+    color: var(--pink);
+    font-weight: 800;
+}
+
+.project-card h3 {
+    margin: 12px 0;
+    font-size: 19px;
+}
+
+.project-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.tag {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #a78bfa20;
+    color: var(--purple);
+    font-size: 11px;
+}
+
+/* Education */
+.education-box {
+    background: var(--card);
+    border-left: 4px solid var(--purple);
+    padding: 28px;
+    border-radius: 10px;
+}
+
+.education-box h3 {
+    margin-bottom: 10px;
+}
+
+.education-box p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Contact */
+.contact-box {
+    text-align: center;
+    background: linear-gradient(135deg, #17132e, #24143b);
+    padding: 45px 25px;
+    border-radius: 20px;
+    border: 1px solid #a78bfa40;
+}
+
+.contact-box p {
+    color: var(--muted);
+    margin: 15px 0 25px;
+    font-size: 14px;
+}
+
+.contact-box a {
+    color: var(--purple);
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid #ffffff12;
+}
+
+/* Scroll animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile responsive */
+@media(max-width: 800px) {
+    nav {
+        padding: 18px 5%;
+    }
+
+    nav ul {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    section {
+        padding: 70px 7%;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .hero-circle {
+        width: 180px;
+        height: 180px;
+        min-width: 180px;
+        font-size: 60px;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 450px) {
+    nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">VJ<span>.</span></div>
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="small-heading">WELCOME TO MY PORTFOLIO</div>
+        <h1>Hi, I'm <span>Vaishnavi Jaras</span></h1>
+        <h3>Computer Engineering Student | Data Science Enthusiast</h3>
+        <p>
+            I am a passionate Computer Engineering student interested in
+            Data Science, technology and problem-solving. I enjoy learning
+            new skills and building projects that turn ideas into reality.
+        </p>
+        <div class="buttons">
+            <a href="#projects" class="btn primary">Explore My Work</a>
+            <a href="#contact" class="btn secondary">Contact Me</a>
+        </div>
+    </div>
+
+    <div class="hero-circle">VJ</div>
+</section>
+
+<section id="about" class="reveal">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="about-box">
+        Hello! I am Vaishnavi Jaras, a Computer Engineering student
+        at Vidyalankar Institute of Technology, Mumbai, with a
+        specialization in Data Science.
+
+        <br><br>
+
+        I am interested in exploring how technology and data can
+        solve real-world problems. Currently, I am strengthening
+        my knowledge of programming, databases, web development
+        and data analytics.
+
+        <br><br>
+
+        My goal is to continuously improve my technical skills,
+        gain practical experience and work on meaningful projects.
+    </div>
+</section>
+
+<section id="skills" class="reveal">
+    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <div class="skills-grid">
+
+        <div class="skill-card">
+            <h3>Programming</h3>
+            <p>Python, Java (Basics), C (Basics)</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Web Development</h3>
+            <p>HTML, CSS, JavaScript</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Database</h3>
+            <p>SQL, DBMS, MySQL (Learning)</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Data Science</h3>
+            <p>NumPy, Pandas, Data Analysis (Learning)</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Tools</h3>
+            <p>Git, GitHub, VS Code, Google Colab</p>
+        </div>
+
+        <div class="skill-card">
+            <h3>Core Interests</h3>
+            <p>Artificial Intelligence, Data Analytics, Machine Learning</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="projects" class="reveal">
+    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <div class="project-number">01</div>
+            <h3>AI-Powered Career Guidance System</h3>
+            <p>
+                An academic project designed to help students explore
+                career paths through skill matching, skill-gap analysis
+                and personalized learning roadmaps.
+            </p>
+            <span class="tag">React | Python | Machine Learning</span>
+        </div>
+
+        <div class="project-card">
+            <div class="project-number">02</div>
+            <h3>E-Waste Collection Analytics</h3>
+            <p>
+                A data analytics project focused on e-waste collection,
+                data preprocessing, warehouse design and extracting
+                useful insights from collected data.
+            </p>
+            <span class="tag">SQL | Data Warehousing | Analytics</span>
+        </div>
+
+        <div class="project-card">
+            <div class="project-number">03</div>
+            <h3>Gesture-Controlled 4WD Car</h3>
+            <p>
+                An IoT-based project that explores controlling a
+                four-wheel-drive car using hand gestures and
+                electronic sensors.
+            </p>
+            <span class="tag">Arduino | IoT | Sensors</span>
+        </div>
+
+        <div class="project-card">
+            <div class="project-number">04</div>
+            <h3>Personal Portfolio Website</h3>
+            <p>
+                A responsive personal website created to showcase
+                my profile, technical skills, academic projects
+                and learning journey.
+            </p>
+            <span class="tag">HTML | CSS | JavaScript | GitHub Pages</span>
+        </div>
+
+    </div>
+</section>
+
+<section id="education" class="reveal">
+    <h2 class="section-title">My <span>Education</span></h2>
+
+    <div class="education-box">
+        <h3>Vidyalankar Institute of Technology, Mumbai</h3>
+        <p>
+            B.Tech in Computer Engineering<br>
+            Specialization: Data Science<br>
+            Currently pursuing undergraduate studies
+        </p>
+    </div>
+</section>
+
+<section id="contact" class="reveal">
+    <div class="contact-box">
+        <h2>Let's <span style="color:#e879f9">Connect!</span></h2>
+        <p>
+            I am always interested in learning, collaborating
+            and exploring new opportunities.
+        </p>
+        <a class="btn primary"
+           href="mailto:vaishnavijaras8238@gmail.com">
+           Send Me an Email
+        </a>
+        <br><br>
+        <a href="https://github.com/vaishnava8238-boop"
+           target="_blank">
+           Visit My GitHub Profile
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Vaishnavi Jaras | Designed with passion
+</footer>
+
+<script>
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-     if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.skill-bar').forEach(bar => {
-       bar.style.width = bar.style.width;
-      });
-     }
+        if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+        }
     });
-   }, { threshold: 0.3 });
-   document.getElementById('skills') && observer.observe(document.getElementById('skills'));
+}, { threshold: 0.15 });
 
-   lucide.createIcons();
-  </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e82561a671b79e7',t:'MTc3NTQ5NDY5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+revealElements.forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body>
 </html>
